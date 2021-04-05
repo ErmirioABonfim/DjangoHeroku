@@ -1,0 +1,19 @@
+
+
+.home{
+    color: red;
+}
+
+.banner{
+    alignment: right;
+}
+
+.titulo-principal{
+    background: gray;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.caixa{
+    background: gray;
+}

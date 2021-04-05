@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Ordem</title>
+</head>
+<body>
+    <h1> Tem certeza que desejar excluir a ordem:{{ordem.numeroOrdemServico}} </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit"> Delete </button>
+    </form>
+
+</body>
+</html>

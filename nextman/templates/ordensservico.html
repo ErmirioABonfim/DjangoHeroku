@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordens Serviço</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<header>
+    <h1 class="titulo-principal">NextMan - Client</h1>
+
+</header>
+<img class="banner" id="banner" src="{% static 'imagens/template.jpg' %}">
+<div class="caixa">
+    <h1><img src=""></h1>
+    <nav>
+        <ul>
+
+
+            <li><a href="{% url 'nova_ordem' %}">Nova Ordem</a></li>
+
+
+        </ul>
+    </nav>
+</div>
+
+<table class="table border">
+    <caption>Ordens Serviço</caption>
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Nº Ordem</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Data Programada</th>
+        <th>Tipo atividade</th>
+        <th>Tipo Manutenção</th>
+
+        <th>Atualizar</th>
+        <th>Deletar</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    {% for ordem in ordens %}
+    <tr>
+        <th scope="row">Ordem: {{ordem.numeroOrdemServico}}</th>
+        <td>{{ordem.tipoAtividade}}</td>
+        <td>{{ordem.dataProgramacao}}</td>
+        <td>{{ordem.tipoAtividade}}</td>
+        <td>{{ordem.tipoManutencao}}</td>
+
+        <td>
+            <a href=" {% url 'update_ordem' ordem.id %}">{{ ordem.status }}</a>
+        </td>
+        <td>
+            <a href=" {% url 'delete_ordem' ordem.id %}">Deletar</a>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="{% url 'nova_ordem' %}">Nova Ordem</a>
+
+</table>
+<div class="container">
+    <h2>Filtro de Ordens</h2>
+    <p>Escreva algo do conteúdo da tabela para pesquisar </p>
+    <input class="form-control" id="myInput" type="text" placeholder="Pesquisar..">
+    <br>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Nº Ordem</th>
+            <th>Tipo</th>
+            <th>Data Programada</th>
+            <th>Atividade</th>
+            <th>Manutenção</th>
+            <th>Status</th>
+            {% for ordem in ordens %}
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        <tr>
+            <td>{{ordem.numeroOrdemServico}}</td>
+            <td>{{ordem.tipoAtividade}}</td>
+            <td>{{ordem.dataProgramacao}}</td>
+            <td>{{ordem.tipoAtividade}}</td>
+            <td>{{ordem.tipoManutencao}}</td>
+            <td>{{ordem.status}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+</div>
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
+
+</script>
+
+</body>
+</html>
