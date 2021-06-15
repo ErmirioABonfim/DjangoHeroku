@@ -24,9 +24,9 @@ urlpatterns = [
     path('buscar/', include('estoquepecas.urls')),
     path('fNome2/', include('estoquepecas.urls')),
     path('ordens/', include('controleordens.urls')),
-    # path('login/', auth_views.LoginView, name='login'),
-    # path('logout/', auth_views.auth_logout, name='logout')
+    path('login/', auth_views.LoginView, name='login'),
+    path('logout/', auth_views.auth_logout, name='logout')
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#if settings.DEBUG:
+  #  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

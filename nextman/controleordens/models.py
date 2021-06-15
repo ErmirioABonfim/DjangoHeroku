@@ -62,7 +62,6 @@ class OrdemServico(models.Model):
 
 
 
-
     def __str__(self):
         # return 'OS: ' + str(self.numeroOrdemServico) + ' - ' + str(self.tipoAtividade) + ' - ' + str(self.tipoManutencao) + ' - ' + str(self.dataProgramacao) + ' - Status: ' + str(self.status)
         return f'OS: {str(self.numeroOrdemServico)} - {str(self.tipoServicos)} - {str(self.tipoManutencao)} - {str(self.dataProgramada)} - Status: {str(self.status)}'
