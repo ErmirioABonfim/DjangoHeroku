@@ -129,6 +129,5 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = 'staticfiles'
-# LOGIN_URL ='/login/'
-# LOGIN_REDIRECT_URL ='ordensservic
-# o'
+LOGIN_URL ='/login/'
+LOGIN_REDIRECT_URL ='ordensservico'
